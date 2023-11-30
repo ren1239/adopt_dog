@@ -10,7 +10,7 @@ function Card({ dog, onCardClick, isSelected }) {
   return (
     <div className={cardClasses} onClick={onCardClick}>
       <div className="picture">
-        <img src="/" alt="dog name" />
+        <img src="/" alt={name} />
       </div>
       <div className="info">
         <h3>{name}</h3>
