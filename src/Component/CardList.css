@@ -1,8 +1,12 @@
-.nav-list ul {
+.card-list {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-  list-style-type: none;
-  height: 80px;
+  height: 600px;
+}
+
+.card-body > h3 {
+  margin-top: 50px;
+  font-size: 20px;
 }
