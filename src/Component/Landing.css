@@ -1,5 +1,18 @@
-.landing-body{
-    display:grid;
-    grid-template-columns: 1fr 1fr;
+.landing-body {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  height: 600px;
+  width: 100%;
+  overflow: hidden;
+}
 
+.landing-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.landing-image {
+  height: auto;
+  width: 100%;
 }
