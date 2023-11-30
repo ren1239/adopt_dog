@@ -15,7 +15,7 @@ function Card({ dog, onCardClick, isSelected }) {
   // Determine the card's className based on whether it's selected
   const cardClasses = isSelected ? "card selected" : "card";
 
-  // Return Statement
+  // Return Statementd
   return (
     <div className={cardClasses} onClick={onCardClick}> {/* Added onClick event here */}
       <div className="picture">
