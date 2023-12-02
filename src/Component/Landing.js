@@ -6,10 +6,21 @@ import "../index.css";
 function Landing() {
   return (
     <body className="landing-body">
-      <div className="landing-text">
-        <h1 className=" text-4xl text-blue-500">Adopt Don't Shop</h1>
-        <p>It's never too late to fall in love</p>
-        <button>CHANGE A LIFE</button>
+      <div className="landing-text bg-lightest">
+        <h1 className=" text-5xl font-newsreader font-extralight">
+          <span className="text-primary">Adopt</span> <br />
+          Don't Shop
+        </h1>
+        <p className="mt-4 text-xs">It's never too late to fall in love</p>
+        <div>
+          <a
+            href="./"
+            className="inline-block border-2 rounded-md shadow-md text-xs
+             border-primary bg-white text-dark px-7 py-2 mt-40"
+          >
+            CHANGE A LIFE
+          </a>
+        </div>
       </div>
       <div>
         <img src={dog_face} alt="dog face" className="landing-image"></img>
