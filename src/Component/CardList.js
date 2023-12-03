@@ -14,10 +14,10 @@ function CardList() {
 
   return (
     <div card-body>
-      <h3 className="text-5xl font-newsreader font-extralight mt-20 p-6">
+      <h3 className="text-5xl font-newsreader font-extralight my-20 p-6">
         Looking for <span className="text-primary">Love?</span>
       </h3>
-      <div className="card-list">
+      <div className="card-list flex flex-col gap-5 mx-20 my-20 md:flex-row ;">
         {Dogs.slice(0, 3).map((dog) => {
           return (
             // Set a conditional Rendering statement - if no card is selected (null) all will render
