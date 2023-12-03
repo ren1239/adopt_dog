@@ -14,7 +14,9 @@ function CardList() {
 
   return (
     <div card-body>
-      <h3>Looking for Love?</h3>
+      <h3 className="text-5xl font-newsreader font-extralight mt-20 p-6">
+        Looking for <span className="text-primary">Love?</span>
+      </h3>
       <div className="card-list">
         {Dogs.slice(0, 3).map((dog) => {
           return (
