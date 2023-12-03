@@ -13,7 +13,7 @@ function CardList() {
   };
 
   return (
-    <div card-body>
+    <div card-body className="md:h-screen">
       <h3 className="text-5xl font-newsreader font-extralight my-20 p-6">
         Looking for <span className="text-primary">Love?</span>
       </h3>

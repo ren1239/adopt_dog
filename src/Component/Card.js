@@ -8,9 +8,9 @@ function Card({ dog, onCardClick, isSelected }) {
   return (
     <div
       className={`${cardClasses} 
-    h-3/5 flex flex-col  rounded-xl
+    h-4/5 flex flex-col  rounded-xl
      bg-white text-center shadow overflow-hidden 
-      w-72`}
+      w-72  md:h-96 md:pb-20`}
       onClick={onCardClick}
     >
       <img

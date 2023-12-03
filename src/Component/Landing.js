@@ -5,7 +5,7 @@ function Landing() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-9 h-screen overflow-hidden">
       <div className="col-span-1 md:col-span-3 flex flex-col justify-center p-4 bg-lightest">
-        <h1 className="text-5xl font-extralight text-center md:text-center">
+        <h1 className="text-5xl font-extralight font-newsreader text-center md:text-center">
           <span className="text-primary">Adopt</span> <br />
           Don't Shop
         </h1>
