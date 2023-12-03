@@ -37,10 +37,18 @@ function SearchList() {
   // JSX for rendering the component
   return (
     <div>
+      <label
+        htmlFor="name"
+        className=" block  text-sm text font-medium leading-6 text-gray-900"
+      >
+        Name
+      </label>
       <SearchBox
         onChangeHandler={onSearchChange}
-        placeholder="search dogs"
-        className="search-box"
+        placeholder="Mantou"
+        className="block w-1/5 mx-auto  rounded-full border-0 px-4 py-1.5 text-gray-900 
+        shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 
+        focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
       />
       <CardDisplay dogs={filteredDogs} />
     </div>
@@ -48,3 +56,13 @@ function SearchList() {
 }
 
 export default SearchList;
+
+<div className="mt-2">
+  <input
+    type="text"
+    name="name"
+    id="name"
+    className="block w-full rounded-full border-0 px-4 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+    placeholder="Jane Smith"
+  />
+</div>;
