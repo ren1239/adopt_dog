@@ -1,3 +1,10 @@
+import Tofu from "../Assets/Tofu.jpg";
+import Mantou from "../Assets/Mantou.jpg";
+import Charsiu from "../Assets/Charsiu.jpg";
+import Cesar from "../Assets/Cesar.jpg";
+import Bao from "../Assets/Bao.jpg";
+import Koko from "../Assets/Koko.jpg";
+
 const Dogs = [
   {
     id: "d1",
@@ -11,6 +18,7 @@ const Dogs = [
     trainability: "7.2",
     sociable: "7.2",
     grooming: "9.2",
+    picture: Tofu,
   },
 
   {
@@ -25,6 +33,7 @@ const Dogs = [
     trainability: "4.2",
     sociable: "6.2",
     grooming: "3.2",
+    picture: Mantou,
   },
 
   {
@@ -39,6 +48,7 @@ const Dogs = [
     trainability: "4.2",
     sociable: "2.2",
     grooming: "4.2",
+    picture: Charsiu,
   },
   {
     id: "d4",
@@ -52,6 +62,7 @@ const Dogs = [
     trainability: "4.2",
     sociable: "2.2",
     grooming: "4.2",
+    picture: Cesar,
   },
   {
     id: "d5",
@@ -65,6 +76,7 @@ const Dogs = [
     trainability: "4.2",
     sociable: "6.2",
     grooming: "3.2",
+    picture: Bao,
   },
   {
     id: "d6",
@@ -78,6 +90,7 @@ const Dogs = [
     trainability: "4.2",
     sociable: "6.2",
     grooming: "3.2",
+    picture: Koko,
   },
 ];
 

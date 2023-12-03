@@ -1,20 +1,36 @@
 import React from "react";
-import "./Landing.css";
 import dog_face from "../Assets/Dog_Face.jpg";
-import "../index.css";
 
 function Landing() {
   return (
-    <body className="landing-body">
-      <div className="landing-text">
-        <h1 className=" text-4xl text-blue-500">Adopt Don't Shop</h1>
-        <p>It's never too late to fall in love</p>
-        <button>CHANGE A LIFE</button>
+    <div className="grid grid-cols-1 md:grid-cols-9 h-screen overflow-hidden">
+      <div className="col-span-1 md:col-span-3 flex flex-col justify-center p-4 bg-lightest">
+        <h1 className="text-5xl font-extralight font-newsreader text-center md:text-center">
+          <span className="text-primary">Adopt</span> <br />
+          Don't Shop
+        </h1>
+        <div className="w-1/3 mt-3 border-t border-primary mx-auto border-gray-300"></div>
+        <p className="mt-4 text-sm text-center md:text-center">
+          It's never too late to fall in love
+        </p>
+        <div className="pt-24 text-center md:text-center">
+          <a
+            href="./"
+            className="inline-block border-2 rounded-md shadow-md text-xs border-primary bg-white px-7 py-2"
+          >
+            CHANGE A LIFE
+          </a>
+        </div>
       </div>
-      <div>
-        <img src={dog_face} alt="dog face" className="landing-image"></img>
+
+      <div className="col-span-1 md:col-span-6">
+        <img
+          src={dog_face}
+          alt="dog face"
+          className="w-auto h-full object-cover overflow-hidden"
+        />
       </div>
-    </body>
+    </div>
   );
 }
 
