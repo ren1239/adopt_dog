@@ -81,7 +81,7 @@ const Dogs = [
   {
     id: "d6",
     name: "Koko",
-    age: "4",
+    age: "0.5",
     location: "Huangpu, Shanghai",
     sex: "female",
     neutered: false,
