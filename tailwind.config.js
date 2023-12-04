@@ -21,5 +21,5 @@ module.exports = {
       red: "#FE6545",
     },
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 };
