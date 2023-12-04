@@ -1,8 +1,20 @@
+import { useState } from "react";
+
 function Card({ dog, onCardClick, isSelected }) {
   const { name, age, sex, location, picture } = dog;
 
   // Determine the card's className based on whether it's selected
   const cardClasses = isSelected ? "card selected" : "card";
+
+  // Heart click state
+  const [heartColor, setheartColor] = useState("text-white");
+
+  // Handle heart click
+  const handleClick = () => {
+    const newHeartColor =
+      heartColor === "text-white" ? "text-red" : "text-white";
+    setheartColor(newHeartColor);
+  };
 
   // Return Statement
   return (
@@ -10,7 +22,7 @@ function Card({ dog, onCardClick, isSelected }) {
       className={`${cardClasses} 
     h-4/5 flex flex-col  rounded-xl
      bg-white text-center shadow overflow-hidden 
-      w-72  md:h-96 md:pb-20`}
+      w-72  md:h-96 md:pb-20 relative`}
       onClick={onCardClick}
     >
       <img
@@ -37,6 +49,12 @@ function Card({ dog, onCardClick, isSelected }) {
       <span className="text-sm text-left mx-8 mt-3 mb-4 text-medium">
         {location}
         <i class="fas fa-map-marker-alt ml-3"></i>
+      </span>
+      <span onClick={handleClick}>
+        {" "}
+        <i
+          className={`fa fa-heart absolute top-3 right-3 text-xl  shadow-white ${heartColor} `}
+        ></i>{" "}
       </span>
     </div>
   );
