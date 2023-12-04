@@ -4,7 +4,7 @@ import logo from "../Assets/logo.png";
 
 function Navbar() {
   return (
-    <nav className="nav-list text-xs bg-white">
+    <nav className="nav-list text-xs bg-white fixed w-full z-50 ">
       <ul>
         <li>
           {" "}

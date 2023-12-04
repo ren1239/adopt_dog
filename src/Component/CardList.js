@@ -1,5 +1,6 @@
 import Card from "./Card.js";
 import Dogs from "./Dogs.js";
+import BigCard from "./BigCard.js";
 import "./CardList.css";
 import { useState } from "react";
 
@@ -13,7 +14,7 @@ function CardList() {
   };
 
   return (
-    <div card-body className="md:h-screen">
+    <div card-body className="">
       <h3 className="text-5xl font-newsreader font-extralight my-20 p-6">
         Looking for <span className="text-primary">Love?</span>
       </h3>
@@ -28,12 +29,15 @@ function CardList() {
                 dog={dog}
                 key={dog.id}
                 isSelected={dog.id === selectedCard}
-                onCardClick={() => handleClick(dog.id)}
+                // onCardClick={() => handleClick(dog.id)}
               />
             )
           );
         })}
       </div>
+      {Dogs.slice(2, 3).map((dog) => {
+        return <BigCard dog={dog} key={dog.id} />;
+      })}
     </div>
   );
 }
