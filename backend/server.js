@@ -13,6 +13,9 @@ app.listen(port, () => {
   console.log(`this app is running on https://localhost${port}`);
 });
 
+// Setup Environmental variables
+require('dotenv').config();
+
 // import mongoose into the app
 const mongoose = require(mongoose);
 
@@ -23,3 +26,7 @@ mongoose
   })
   .then(() => console.log(`connected to MongoDB`))
   .catch((err) => console.error("Could not connect to MongoDB", err));
+
+
+  const multer = require('multer');
+  const upload = multer({dest: 'uploads/'})
