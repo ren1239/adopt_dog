@@ -36,18 +36,16 @@ function InputForm() {
   //   }
   // };
 
-const handleInputChange = (e) =>{
-  const [name, value, files, checked,type] = e.target 
-    if (type === 'checkbox'){
-      setFormData((prev) =>({...prev , [name] : checked}))
+  const handleInputChange = (e) => {
+    const { name, value, files, checked, type } = e.target;
+    if (type === "checkbox") {
+      setFormData((prev) => ({ ...prev, [name]: checked }));
+    } else if (type === "file") {
+      setFormData((prev) => ({ ...prev, [name]: files[0] }));
+    } else {
+      setFormData((prev) => ({ ...prev, [name]: value }));
     }
-    else if (type === 'file') {
-      setFormData((prev)=>({...prev , [name] : files[0]}))
-    }
-    else {
-      setFormData((prev)=>({...prev , [name]:value}))
-    }
-}
+  };
 
   //   Function to handle clear data
   const handleClear = () => {
@@ -55,8 +53,29 @@ const handleInputChange = (e) =>{
   };
 
   //   Function to handle empty form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
+    try {
+      const response = await fetch("http://localhost:3000/dogs", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status : ${response.status}`);
+      }
+      const result = await response.json();
+      console.log(result);
+      // Handle success here (e.g., display a success message)
+
+      handleClear(); // Optionally clear the form on successful submission
+    } catch (error) {
+      console.error("error submitting form", error);
+      // Handle error here (e.g., display an error message)
+    }
+
     console.log(formData);
   };
 
