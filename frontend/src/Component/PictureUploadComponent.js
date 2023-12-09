@@ -14,8 +14,13 @@ function PictureUploadComponent({ label, name, onChange }) {
   };
 
   return (
-    <div className={`ProfilePictureUpload${name}`}>
-      <label htmlFor={name}>{label}</label>
+    <div className={`ProfilePictureUpload${name} mx-4`}>
+      <label
+        htmlFor={name}
+        className="ml-px block text-sm font-medium leading-6 pl-4 text-left"
+      >
+        {label}
+      </label>
       <input
         type="file"
         name={name}

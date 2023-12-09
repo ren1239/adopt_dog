@@ -83,13 +83,21 @@ function InputForm() {
   const OptionsToTen = Array.from({ length: 10 }, (_, i) => i + 1);
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
+    <div className=" flex justify-center items-center min-h-screen bg-gray-100 flex-col ">
+      <form
+        onSubmit={handleSubmit}
+        className="w-full max-w-md  p-10 px-20 bg-lightest shadow-md  rounded-2xl border border-light "
+      >
+        <h2 className="text-5xl font-extralight font-newsreader text-center md:text-cente py-4">
+          Input Data
+        </h2>
         <InputComponent
           label="Name"
           type="text"
           name="name"
           placeholder="Charsiu"
+          tailwindLabel="ml-px block text-sm font-medium leading-6 pl-4 text-left "
+          tailwind="block w-full rounded-full border px-4 "
           value={formData.name}
           onChange={handleInputChange}
         />
@@ -99,6 +107,8 @@ function InputForm() {
           type="number"
           name="age"
           placeholder="3"
+          tailwindLabel="ml-px block text-sm font-medium leading-6 pl-4 text-left"
+          tailwind="block w-full rounded-full border px-4 "
           value={formData.age}
           onChange={handleInputChange}
         />
@@ -108,6 +118,8 @@ function InputForm() {
           type="text"
           name="location"
           placeholder="Huangpu,Shanghai"
+          tailwindLabel="ml-px block text-sm font-medium leading-6 pl-4 text-left"
+          tailwind="block w-full rounded-full border px-4 "
           value={formData.location}
           onChange={handleInputChange}
         />
@@ -174,14 +186,26 @@ function InputForm() {
         <label>Description</label>
         <textarea
           name="description"
+          className="ml-px block text-sm font-medium leading-6 pl-4 text-left w-full rounded-xl"
           value={formData.description}
           onChange={handleInputChange}
           placeholder="300 word description"
         />
-        <button type="submit">Submit</button>
-        <button type="button" onClick={handleClear}>
-          Clear
-        </button>
+        <div className="flex  justify-between my-4">
+          <button
+            type="button"
+            onClick={handleClear}
+            className="rounded-full  border-primary  shadow-sm  bg-white px-3 py-1 hover:bg-primary"
+          >
+            Clear
+          </button>
+          <button
+            type="submit"
+            className="rounded-full  border-primary  shadow-sm  bg-primary px-3 py-1 hover:bg-white hover:border-2 w-full"
+          >
+            Submit
+          </button>
+        </div>
       </form>
     </div>
   );
