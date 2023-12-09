@@ -1,34 +1,51 @@
-//  Import Cors into the app
-const cors = require("cors");
+require("dotenv").config();
 
-// Import express into the app
+// Importing necessary modules
+
+const cors = require("cors");
 const express = require("express");
+const mongoose = require("mongoose");
+const multer = require("multer");
+
+// Importing custom modules
+
+const uploadToS3 = require("./s3-config");
+const Dog = require("./models/dog");
+
+require("dotenv").config();
+
 // initilize the application with express
 const app = express();
-// Declare the port
 const port = 3000;
 
 // Configure middleware
 app.use(express.json());
 app.use(cors());
 
-// Setup Environmental variables
-require("dotenv").config();
+// import multer into the app
+
+const upload = multer({ dest: "uploads/" });
 
 // import mongoose into the app
-const mongoose = require("mongoose");
 
 mongoose
   .connect(process.env.MONGODB_URI)
   .then(() => console.log(`connected to MongoDB`))
   .catch((err) => console.error("Could not connect to MongoDB", err));
 
-// Import and use the Dog Model in your application
-const Dog = require("./models/dog");
-
 // Example: POST route to create a new dog profile
-app.post("/dogs", async (req, res) => {
+app.post("/dogs", upload.single("picture"), async (req, res) => {
   try {
+    //  check if there is a file to upload
+    if (req.file) {
+      const uploadResult = await uploadToS3(req.file);
+      console.log(req.file);
+
+      //  Add the S3 url to  your form Data
+      req.body.picture = uploadResult.Location;
+    }
+
+    // Create a new dog object including the URL of the picture
     const newDog = new Dog(req.body);
     const savedDog = await newDog.save();
     res.status(201).json({
@@ -45,10 +62,7 @@ app.listen(port, () => {
   console.log(`this app is running on http://localhost:${port}`);
 });
 
-// import multer into the app
-
-//   const multer = require('multer');
-//   const upload = multer({dest: 'uploads/'})
+// Intergrate s3 upload
 
 // //   // Route for file uploads
 // //   app.post('/upload' , upload.single('picture') , async(req,res) =>{

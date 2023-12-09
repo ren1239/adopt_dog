@@ -6,6 +6,16 @@ import SelectComponent from "./SelectComponent";
 import PictureUploadComponent from "./PictureUploadComponent";
 
 function InputForm() {
+  // Function check form is filled
+  const isFormValid = () => {
+    return (
+      formData.name.trim() &&
+      formData.age.trim() &&
+      formData.location.trim() &&
+      formData.description.trim()
+    );
+  };
+
   // Database form logic
 
   const initialFormData = {
@@ -24,17 +34,6 @@ function InputForm() {
   };
 
   const [formData, setFormData] = useState(initialFormData);
-
-  // const handleInputChange = (e) => {
-  //   const { name, value, type, checked, files } = e.target;
-  //   if (type === "checkbox") {
-  //     setFormData((prev) => ({ ...prev, [name]: checked }));
-  //   } else if (type === "file") {
-  //     setFormData((prev) => ({ ...prev, [name]: files[0] }));
-  //   } else {
-  //     setFormData((prev) => ({ ...prev, [name]: value }));
-  //   }
-  // };
 
   const handleInputChange = (e) => {
     const { name, value, files, checked, type } = e.target;
@@ -201,7 +200,13 @@ function InputForm() {
           </button>
           <button
             type="submit"
-            className="rounded-full ml-2 border-primary  shadow-sm  bg-primary px-3 py-1 hover:bg-white hover:border-2 w-full"
+            disabled={isFormValid()}
+            className={`rounded-full ml-2 border-primary  border-2 shadow-sm px-3 py-1 w-full
+            ${
+              isFormValid()
+                ? " bg-primary text-white hover:bg-white hover:border-2 hover:text-dark"
+                : " bg-medium cursor-not-allowed text-white hover:bg-dark"
+            }`}
           >
             Submit
           </button>
