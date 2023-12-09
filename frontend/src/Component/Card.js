@@ -48,7 +48,7 @@ function Card({ dog, onCardClick, isSelected }) {
       </ul>
       <span className="text-sm text-left mx-8 mt-3 mb-4 text-medium">
         {location}
-        <i class="fas fa-map-marker-alt ml-3"></i>
+        <i className="fas fa-map-marker-alt ml-3"></i>
       </span>
       <span onClick={handleClick}>
         {" "}

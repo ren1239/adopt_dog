@@ -1,5 +1,4 @@
 import React from "react";
-import { useState } from "react";
 import ProgressCircle from "./ProgressCircle";
 
 function BigCard({ dog }) {
@@ -16,16 +15,6 @@ function BigCard({ dog }) {
     grooming,
     trainability,
   } = dog;
-
-  // Heart click state
-  const [heartColor, setheartColor] = useState("text-white");
-
-  // Handle heart click
-  const handleClick = () => {
-    const newHeartColor =
-      heartColor === "text-white" ? "text-red" : "text-white";
-    setheartColor(newHeartColor);
-  };
 
   // Return Statement
   return (
@@ -58,7 +47,7 @@ function BigCard({ dog }) {
         </ul>
         <span className="text-sm text-left mx-8 mt-3 mb-4 text-medium">
           {location}
-          <i class="fas fa-map-marker-alt ml-3"></i>
+          <i className="fas fa-map-marker-alt ml-3"></i>
         </span>
       </div>
 

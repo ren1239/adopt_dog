@@ -83,10 +83,10 @@ function InputForm() {
   const OptionsToTen = Array.from({ length: 10 }, (_, i) => i + 1);
 
   return (
-    <div className=" flex justify-center items-center min-h-screen bg-gray-100 flex-col ">
+    <div className=" flex justify-center items-center min-h-screen bg-gray-100 flex-col w-3/4 mx-auto">
       <form
         onSubmit={handleSubmit}
-        className="w-full max-w-md  p-10 px-20 bg-lightest shadow-md  rounded-2xl border border-light "
+        className="w-full max-w-md  p-10 md:px-20 bg-lightest shadow-md  rounded-2xl border border-light "
       >
         <h2 className="text-5xl font-extralight font-newsreader text-center md:text-cente py-4">
           Input Data
@@ -201,7 +201,7 @@ function InputForm() {
           </button>
           <button
             type="submit"
-            className="rounded-full  border-primary  shadow-sm  bg-primary px-3 py-1 hover:bg-white hover:border-2 w-full"
+            className="rounded-full ml-2 border-primary  shadow-sm  bg-primary px-3 py-1 hover:bg-white hover:border-2 w-full"
           >
             Submit
           </button>
