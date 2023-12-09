@@ -30,8 +30,8 @@ function App() {
               }
             />
             <Route path="/about" element={<About />} />
-            <Route path="/cat" element={<Cat />} />
-            <Route path="/dog" element={<Dog />} />
+            <Route path="/cats" element={<Cat />} />
+            <Route path="/dogs" element={<Dog />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </div>

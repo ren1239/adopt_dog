@@ -54,13 +54,15 @@ function InputForm() {
   //   Function to handle empty form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const formDataToSend = new FormData();
+    Object.keys(formData).forEach((key) => {
+      formDataToSend.append(key, formData[key]);
+    });
     try {
       const response = await fetch("http://localhost:3000/dogs", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
+        body: formDataToSend,
       });
       if (!response.ok) {
         throw new Error(`HTTP error! Status : ${response.status}`);
@@ -94,7 +96,7 @@ function InputForm() {
           label="Name"
           type="text"
           name="name"
-          placeholder="Charsiu"
+          placeholder="Name"
           tailwindLabel="ml-px block text-sm font-medium leading-6 pl-4 text-left "
           tailwind="block w-full rounded-full border px-4 "
           value={formData.name}
@@ -105,7 +107,7 @@ function InputForm() {
           label="Age"
           type="number"
           name="age"
-          placeholder="3"
+          placeholder="age"
           tailwindLabel="ml-px block text-sm font-medium leading-6 pl-4 text-left"
           tailwind="block w-full rounded-full border px-4 "
           value={formData.age}
@@ -200,7 +202,7 @@ function InputForm() {
           </button>
           <button
             type="submit"
-            disabled={isFormValid()}
+            disabled={!isFormValid()}
             className={`rounded-full ml-2 border-primary  border-2 shadow-sm px-3 py-1 w-full
             ${
               isFormValid()

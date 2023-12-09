@@ -1,49 +1,26 @@
 require("dotenv").config();
-AWS_SDK_LOAD_CONFIG = 1;
 
 // Import necessary modules
 const express = require("express");
-const aws = require("aws-sdk");
-
-const { Upload } = require("@aws-sdk/lib-storage");
-const { S3 } = require("@aws-sdk/client-s3");
-
+const { S3Client, PutObjectCommand } = require("@aws-sdk/client-s3");
 const multer = require("multer");
-const stream = require("stream");
 const mongoose = require("mongoose");
 const cors = require("cors");
+const apiRoutes = require("./routes/api"); // Import your API routes file
 
 const Dog = require("./models/dog"); // Import your Dog model
 
-// Initialize AWS S3
-// JS SDK v3 does not support global configuration.
-// Codemod has attempted to pass values to each service client in this file.
-// You may need to update clients outside of this file, if they use global config.
-aws.config.update({
-  // The key apiVersion is no longer supported in v3, and can be removed.
-  // @deprecated The client uses the "latest" apiVersion.
-  apiVersion: "latest",
-  secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
-  accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+// Initialize AWS S3 client with V3 SDK
+const s3Client = new S3Client({
   region: process.env.AWS_REGION,
-});
-const s3 = new S3({
-  // The key apiVersion is no longer supported in v3, and can be removed.
-  // @deprecated The client uses the "latest" apiVersion.
-  apiVersion: "latest",
-
   credentials: {
-    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
     accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
   },
-
-  region: process.env.AWS_REGION,
 });
 
 // Initialize Express
 const app = express();
-const port = 3000;
-
 app.use(express.json());
 app.use(cors());
 
@@ -56,31 +33,39 @@ app.post("/dogs", upload.single("picture"), async (req, res) => {
     return res.status(400).send("No file uploaded.");
   }
 
-  // Convert buffer to stream
-  const readableStream = new stream.PassThrough();
-  readableStream.end(req.file.buffer);
-
-  const uploadParams = {
+  // Prepare to upload to S3
+  const key = `${Date.now()}-${req.file.originalname}`;
+  const command = new PutObjectCommand({
     Bucket: process.env.AWS_BUCKET_NAME,
-    Key: `${Date.now()}-${req.file.originalname}`, // File name you want to save as in S3
-    Body: readableStream,
-  };
+    Key: key,
+    Body: req.file.buffer,
+  });
 
   try {
-    const data = await new Upload({
-      client: s3,
-      params: uploadParams,
-    }).done();
-    req.body.picture = data.Location; // The URL of the uploaded file
+    await s3Client.send(command);
+    const pictureUrl = `https://${process.env.AWS_BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${key}`;
+    req.body.picture = pictureUrl;
 
+    // Save the new dog with the picture URL
     const newDog = new Dog(req.body);
-    const savedDog = await newDog.save();
-    res.status(201).json({
-      message: "New dog profile successfully saved",
-      dog: savedDog,
-    });
+    await newDog.save();
+
+    res
+      .status(201)
+      .json({ message: "New dog profile successfully saved", dog: newDog });
   } catch (err) {
     res.status(500).json({ message: err.message });
+  }
+});
+
+// GET route for retrieving all dogs
+app.get("/dogs", async (req, res) => {
+  try {
+    const dogs = await Dog.find(); // Retrieve all dogs
+    res.status(200).json(dogs);
+  } catch (error) {
+    console.error("Error fetching dogs:", error);
+    res.status(500).json({ error: "Internal server error" });
   }
 });
 
@@ -90,7 +75,7 @@ mongoose
   .then(() => console.log("Connected to MongoDB"))
   .catch((err) => console.error("Could not connect to MongoDB", err));
 
-// Listen on the configured port
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+// Start the server
+app.listen(process.env.PORT || 3000, () => {
+  console.log(`Server running on port ${process.env.PORT || 3000}`);
 });
