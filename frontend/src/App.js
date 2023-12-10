@@ -16,23 +16,25 @@ function App() {
     <Router>
       <div className="App">
         <Navbar />
-        <Routes>
-          <Route
-            exact
-            path="/"
-            element={
-              <>
-                <Landing />
-                <CardList />
-                <SearchList />
-              </>
-            }
-          />
-          <Route path="/about" element={<About />} />
-          <Route path="/cat" element={<Cat />} />
-          <Route path="/dog" element={<Dog />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+        <div className=" pt-20">
+          <Routes>
+            <Route
+              exact
+              path="/"
+              element={
+                <>
+                  <Landing />
+                  <CardList />
+                  <SearchList />
+                </>
+              }
+            />
+            <Route path="/about" element={<About />} />
+            <Route path="/cats" element={<Cat />} />
+            <Route path="/dogs" element={<Dog />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </div>
         <Footer />
       </div>
     </Router>

@@ -1,7 +1,18 @@
-function InputComponent({ label, type, name, placeholder, value, onChange }) {
+function InputComponent({
+  label,
+  type,
+  name,
+  placeholder,
+  value,
+  onChange,
+  tailwind,
+  tailwindLabel,
+}) {
   return (
-    <div className={`Input${name}`}>
-      <label htmlFor={name}>{label}</label>
+    <div className={`Input${name} my-4`}>
+      <label htmlFor={name} className={tailwindLabel}>
+        {label}
+      </label>
       <input
         type={type}
         name={name}
@@ -9,6 +20,7 @@ function InputComponent({ label, type, name, placeholder, value, onChange }) {
         placeholder={placeholder}
         value={value}
         onChange={onChange}
+        className={tailwind}
       />
     </div>
   );

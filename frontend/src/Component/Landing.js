@@ -16,7 +16,8 @@ function Landing() {
         <div className="pt-24 text-center md:text-center">
           <a
             href="./"
-            className="inline-block border-2 rounded-md shadow-md text-xs border-primary bg-white px-7 py-2"
+            className="inline-block border-2 rounded-md shadow-md text-xs
+             border-primary bg-white px-7 py-2 hover:bg-primary hover:border-white hover:text-white"
           >
             CHANGE A LIFE
           </a>
