@@ -38,13 +38,10 @@ function Navbar() {
           {" "}
           <a href="/dogs">Dogs</a>
         </li>
+
         <li>
           {" "}
-          <a href="/cats">Cats</a>
-        </li>
-        <li>
-          {" "}
-          <a href="/about">About</a>
+          <a href="/register">Register</a>
         </li>
         <li>
           {" "}

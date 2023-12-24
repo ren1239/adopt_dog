@@ -251,7 +251,7 @@ function InputForm() {
   };
 
   return (
-    <div className=" flex justify-center bg-gray-100 pt-8 w-3/4 mx-auto">
+    <div className=" flex justify-center bg-gray-100 pt-8 w-3/4 mx-auto py-6">
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-md md:px-20 bg-lightest shadow-md

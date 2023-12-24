@@ -20,16 +20,16 @@ function BigCard({ dog }) {
   return (
     <div
       className={`
-    h-auto grid grid-cols-6 grid-rows-6 w-auto rounded-xl mx-36 my-20 pb-2 overflow-hidden
+    h-auto flex flex-col lg:grid mx-4 md:grid-cols-6 md:grid-rows-6 w-auto rounded-xl md:mx-36 my-20 pb-2 overflow-hidden
      bg-white text-center shadow 
       `}
     >
       <img
         src={picture}
         alt={name}
-        className=" row-span-4 col-span-2 h-full w-auto  object-cover "
+        className=" md:row-span-4 md:col-span-2 h-full w-auto  object-cover "
       />
-      <div className="col-start-1 col-end-7 text-left my-3">
+      <div className="md:col-start-1 md:col-end-7 text-left my-3">
         <ul className=" flex justify-between font-bold pt-6 text-med text-gray-900 mx-8 text-dark">
           <li>
             <h3>
@@ -53,7 +53,7 @@ function BigCard({ dog }) {
 
       <div className="bg-lightest col-start-3 row-start-1 col-span-4 row-span-4">
         <h1 className="text-lg mt-6 font-extralight "> Meet {name} !</h1>
-        <p className="text-xs mx-16 my-8 font-extralight leading-6 ">
+        <p className="text-xs md:mx-16 my-8 font-extralight leading-6 ">
           {" "}
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
@@ -76,7 +76,7 @@ function BigCard({ dog }) {
         </p>
       </div>
       <div className="bg-white col-start-1 row-start-6 col-span-6 ">
-        <ul className="flex justify-around items-center h-full text-xs font-extralight ">
+        <ul className="flex justify-center items-center h-full text-xs font-extralight flex-wrap gap-10 ">
           <li>
             neutered <span> {neutered}</span>
           </li>

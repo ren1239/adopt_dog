@@ -1,7 +1,7 @@
 import React from "react";
 import InputForm from "../Component/InputForm";
 
-function About() {
+function Register() {
   return (
     <div>
       <div className="Nav-Spacer"></div>
@@ -10,4 +10,4 @@ function About() {
   );
 }
 
-export default About;
+export default Register;
