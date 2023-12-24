@@ -55,12 +55,19 @@ function InputForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!isFormValid()) {
+      console.log("Form is not valid");
+      // Optionally, show an error message to the user here
+      return;
+    }
+
     const formDataToSend = new FormData();
     Object.keys(formData).forEach((key) => {
       formDataToSend.append(key, formData[key]);
     });
+
     try {
-      const response = await fetch("http://localhost:3000/dogs", {
+      const response = await fetch("http://localhost:8080/dogs", {
         method: "POST",
         body: formDataToSend,
       });
@@ -69,15 +76,12 @@ function InputForm() {
       }
       const result = await response.json();
       console.log(result);
-      // Handle success here (e.g., display a success message)
-
-      handleClear(); // Optionally clear the form on successful submission
+      // Handle success here
+      handleClear(); // Clear the form on successful submission
     } catch (error) {
       console.error("error submitting form", error);
-      // Handle error here (e.g., display an error message)
+      // Handle error here
     }
-
-    console.log(formData);
   };
 
   // Array of options for the select
@@ -251,7 +255,7 @@ function InputForm() {
   };
 
   return (
-    <div className=" flex justify-center bg-gray-100 pt-8 w-3/4 mx-auto">
+    <div className=" flex justify-center bg-gray-100 pt-8 w-3/4 mx-auto py-6">
       <form
         onSubmit={handleSubmit}
         className="w-full max-w-md md:px-20 bg-lightest shadow-md

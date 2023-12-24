@@ -8,7 +8,7 @@ import {
 
 function Footer() {
   return (
-    <div className="flex justify-center items-center flex-col p-16">
+    <div className="flex justify-center items-center flex-col md:p-16">
       <div className="bg-lightest w-4/5 h-auto rounded-2xl shadow py-4">
         <div className="pt-6 ">
           <h1 className="text-5xl font-extralight font-newsreader text-center md:text-right mr-4">
