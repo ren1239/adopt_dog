@@ -7,7 +7,7 @@ function Dog() {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("http://localhost:3000/dogs");
+        const response = await fetch("http://localhost:8080/dogs");
         if (!response.ok) {
           throw new Error(`HTTP request error ${response.status}`);
         }
