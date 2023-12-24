@@ -18,7 +18,7 @@ function Dog() {
         const data = await response.json();
 
         // Introduce a 5-second delay for testing
-        await new Promise((resolve) => setTimeout(resolve, 5000));
+        await new Promise((resolve) => setTimeout(resolve, 3000));
 
         setDogs(data); // Store the data in state
 
