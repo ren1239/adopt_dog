@@ -4,7 +4,7 @@ import InputForm from "../Component/InputForm";
 function About() {
   return (
     <div>
-      <div className="Nav-Spacer h-24"></div>
+      <div className="Nav-Spacer"></div>
       <InputForm />
     </div>
   );
