@@ -1,5 +1,7 @@
 import React from "react";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom"; // Import Link component
+
 import "./Navbar.css";
 import logo from "../Assets/logo.png";
 
@@ -30,32 +32,32 @@ function Navbar() {
       <ul className="flex flex-row justify-evenly w-full items-center">
         <li>
           {" "}
-          <a href="/">
+          <link href="/">
             <img className="h-10" src={logo} alt="logo" />
-          </a>
+          </link>
         </li>
         <li>
           {" "}
-          <a href="/dogs">Dogs</a>
+          <link href="/dogs">Dogs</link>
         </li>
 
         <li>
           {" "}
-          <a href="/register">Register</a>
+          <link href="/register">Register</link>
         </li>
         <li>
           {" "}
-          <a href="/contact">Contact</a>
+          <link href="/contact">Contact</link>
         </li>
         <li>
           {" "}
-          <a
+          <link
             href="/donate"
             className="inline-block bg-primary text-lightest px-4 py-2 rounded-lg
             hover:bg-white hover:border-primary hover:shadow hover:text-darkest"
           >
             Donate
-          </a>
+          </link>
         </li>
       </ul>
     </nav>
