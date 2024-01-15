@@ -7,11 +7,15 @@ function Dog() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null); // Add error state
 
+  // Define BASE_URL
+  const BASE_URL =
+    process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
+
   useEffect(() => {
     const fetchData = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch("http://localhost:8080/dogs");
+        const response = await fetch(`${BASE_URL}/dogs`);
         if (!response.ok) {
           throw new Error(`HTTP request error ${response.status}`);
         }
