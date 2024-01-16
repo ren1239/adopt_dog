@@ -32,32 +32,32 @@ function Navbar() {
       <ul className="flex flex-row justify-evenly w-full items-center">
         <li>
           {" "}
-          <link href="/">
+          <Link to="/">
             <img className="h-10" src={logo} alt="logo" />
-          </link>
+          </Link>
         </li>
         <li>
           {" "}
-          <link href="/dogs">Dogs</link>
+          <Link to="/dogs">Dogs</Link>
         </li>
 
         <li>
           {" "}
-          <link href="/register">Register</link>
+          <Link to="/register">Register</Link>
         </li>
         <li>
           {" "}
-          <link href="/contact">Contact</link>
+          <Link to="/contact">Contact</Link>
         </li>
         <li>
           {" "}
-          <link
-            href="/donate"
+          <Link
+            to="/donate"
             className="inline-block bg-primary text-lightest px-4 py-2 rounded-lg
             hover:bg-white hover:border-primary hover:shadow hover:text-darkest"
           >
-            Donate
-          </link>
+            Donate!
+          </Link>
         </li>
       </ul>
     </nav>
