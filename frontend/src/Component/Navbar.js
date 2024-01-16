@@ -56,7 +56,7 @@ function Navbar() {
             className="inline-block bg-primary text-lightest px-4 py-2 rounded-lg
             hover:bg-white hover:border-primary hover:shadow hover:text-darkest"
           >
-            Donate
+            Donate!
           </Link>
         </li>
       </ul>
