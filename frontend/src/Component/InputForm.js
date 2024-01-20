@@ -66,8 +66,12 @@ function InputForm() {
       formDataToSend.append(key, formData[key]);
     });
 
+    // Define BASE_URL
+    const BASE_URL =
+      process.env.REACT_APP_API_BASE_URL || "http://localhost:8080";
+
     try {
-      const response = await fetch("http://localhost:8080/dogs", {
+      const response = await fetch(`${BASE_URL}/dogs`, {
         method: "POST",
         body: formDataToSend,
       });
